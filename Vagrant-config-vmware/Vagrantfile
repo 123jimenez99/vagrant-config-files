@@ -2,7 +2,10 @@
 # To install it just run "vagrant plugin install vagrant-vmware-desktop"
 
 Vagrant.configure('2') do |config|
-config.vm.provider "vmware_fusion"
+config.vm.provider "vmware_fusion" do |config|
+config.vmx["memsize"] = "1024"
+config.vmx["numvcpus"] = "2"
+end
 
 config.vm.define "host1" do |host1|
   host1.vm.box = "rethinc-oss/ubuntu-2204"
